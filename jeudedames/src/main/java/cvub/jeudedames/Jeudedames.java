@@ -4,13 +4,20 @@
 
 package cvub.jeudedames;
 
+import java.io.IOException;
+
 /**
  *
  * @author Clément
  */
 public class Jeudedames {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args) throws IOException {
+        
+        Jeu jeu = new Jeu();
+        jeu.initJeu();
+        
+        Sauvegarde s = new Sauvegarde();
+        s.save(jeu, "1.dame");
     }
 }

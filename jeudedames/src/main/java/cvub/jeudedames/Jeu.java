@@ -39,6 +39,11 @@ public class Jeu {
         this.J2 = J2;
     }
     
+    public Jeu() {
+        this.J1 = new ArrayList<>();
+        this.J2 = new ArrayList<>();
+    }
+    
     public Jeu(ArrayList<Pion> J1, ArrayList<Pion> J2) {
         this.J1 = J1;
         this.J2 = J2;
