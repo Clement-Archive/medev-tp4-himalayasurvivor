@@ -43,4 +43,16 @@ public class Jeu {
         this.J1 = J1;
         this.J2 = J2;
     }
+    
+    // 0 if free, 1 if P1, 2 if P2
+    public int dataTile(Case c)
+    {
+        for (Pion pion : J1) {
+            if(pion.getC().equals(c)) {return 1;}
+        }
+        for (Pion pion : J2) {
+            if(pion.getC().equals(c)) {return 2;}
+        }
+        return 0;
+    }
 }
