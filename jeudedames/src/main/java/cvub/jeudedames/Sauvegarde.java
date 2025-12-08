@@ -21,12 +21,16 @@ public class Sauvegarde {
     public Sauvegarde() {
         this.pathDir = "parties";
     }
-
-    public Sauvegarde(String pathDir) {
-        this.pathDir = pathDir;
+    
+    public String pionToString(Pion p) {
+        Case c = p.getC();
+        if (p.isDame()) {
+            return 'D' + p.get
+        } else {
+        }
     }
     
-    public void save(String file_name) throws IOException, FileNotFoundException {
+    public boolean save(Jeu jeu, String file_name) throws IOException, FileNotFoundException {
         File dir = new File(this.pathDir);
         if (dir.isDirectory()) {}
         
@@ -34,34 +38,56 @@ public class Sauvegarde {
         for (String file : files) {
             if (file_name.equals(file)) {
                 System.out.println("Ce nom de sauvegarde est deja utilise. Vous vouliez remplacer ? [Y|n]");
-                Scanner sc = new Scanner(System.in);
-                
+                try (Scanner sc = new Scanner(System.in)) {
+                    String reponse = sc.nextLine().trim().toLowerCase();
+
+                    switch (reponse) {
+                        case "y", "yes" -> {
+                            System.out.println("Le fichier sera remplacé.");
+                        }   
+                        default -> {
+                            System.out.println("Le fichier ne sera pas sauvegarder.");
+                            return false;
+                        }
+                    }
+                }
             }
         }
         
-        String path_file = this.pathDir + file_name;
-        
+        String file_path = this.pathDir + file_name;
         BufferedWriter bufferedWriter=null;
 
-        bufferedWriter = new BufferedWriter(new FileWriter(path_file)); // on attrape l'exception si il y a un probleme lors de l'ecr
+        // on attrape l'exception si il y a un probleme lors de l'ecriture
+        bufferedWriter = new BufferedWriter(new FileWriter(file_path));
+
         // On ecrit dans le fichier
-        for(ElementDeJeu e : elementsDeJeu) {
-            bufferedWriter.write(elementDeJeuToString(e));
-            bufferedWriter.newLine();
+        for(Pion p : jeu.getJ1()) {
+            bufferedWriter.write(pionToString(p));
         }
+        bufferedWriter.newLine();
+        for(Pion p : jeu.getJ2()) {
+            bufferedWriter.write(pionToString(p));
+        }
+
         if (bufferedWriter!=null) {
             // je force l'écriture dans le fichier
             bufferedWriter.flush();
             // puis je le ferme
             bufferedWriter.close();
         }
+        
+        return false;
     }
 
     public String getPath() {
-        return path;
+        return pathDir;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setPath(String pathDir) {
+        this.pathDir = pathDir;
+    }
+    
+    public Sauvegarde(String pathDir) {
+        this.pathDir = pathDir;
     }
 }
