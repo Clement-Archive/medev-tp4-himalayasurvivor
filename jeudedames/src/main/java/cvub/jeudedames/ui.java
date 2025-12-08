@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author Clément
  */
-public class ui {
+public class Ui {
     
     public void uiTourDeJeu(Jeu jeu, boolean tourDuJoueur1)
     {
@@ -26,16 +26,16 @@ public class ui {
     public void displayJeu(Jeu jeu) //un X pour les noirs et un O pour les blancs
     {
         //-----------------affichage top-----------------
-        System.out.println("  | |1| |2| |3| |4| |5|  ");
+        System.out.println("      1   2   3   4   5   ");
         
         //----------------affichage lignes----------------
         boolean ligneStartCaseBlanche = true;
-        List<String> legendLignes = Arrays.asList(" 5"," 6","15","16","25","26","35","36","45","46");
+        List<String> legendLignes = Arrays.asList("5 "," 6","15","16","25","26","35","36","45","46");
         
         int nbLignes = 10;
         for(int iLigne = 0;iLigne<nbLignes;iLigne++)
         {
-            System.out.print(!ligneStartCaseBlanche?legendLignes.get(iLigne)+"| ":"  ");
+            System.out.print(!ligneStartCaseBlanche?legendLignes.get(iLigne) + " ":"   | ");
             //affichage ligne
             int nbCol = 5;
             for (int iCol = 0; iCol < nbCol; iCol++) {
@@ -46,12 +46,14 @@ public class ui {
                 if(iCol<nbCol-1) {System.out.print(" ");}
             }
             
-            if(iLigne<iLigne-1) {System.out.println("  ---------------------  ");}
-            System.out.println(ligneStartCaseBlanche?legendLignes.get(iLigne):" |  ");
+            System.out.println(ligneStartCaseBlanche?" "+legendLignes.get(iLigne):" |   ");
+            //if(iLigne<nbLignes-1) {System.out.println("  ---------------------  ");}
+            
+            ligneStartCaseBlanche=!ligneStartCaseBlanche;
         }
         
         //----------------affichage bottom----------------
-        System.out.println("  46  47  48  49  50     ");
+        System.out.println("   46  47  48  49  50     ");
     }    
     
     private Case inputCase()

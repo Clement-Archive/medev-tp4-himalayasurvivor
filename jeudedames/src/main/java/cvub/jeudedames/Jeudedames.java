@@ -17,7 +17,10 @@ public class Jeudedames {
         Jeu jeu = new Jeu();
         jeu.initJeu();
         
-        Sauvegarde s = new Sauvegarde();
-        s.save(jeu, "1.dame");
+        Ui ui = new Ui();
+        ui.displayJeu(jeu);
+        
+        
+        
     }
 }

@@ -43,4 +43,9 @@ public class Case {
         this.x=ix;
         this.y=iy;
     }
+   
+    public boolean equals(Case c) {
+        return (c.x==x&&c.y==y);
+    }
+
 }
