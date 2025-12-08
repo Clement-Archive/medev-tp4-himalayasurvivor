@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -49,18 +50,22 @@ public class Sauvegarde {
         }
     }
     
-    public Pion stringToPion(String s) {
-        int i = 0;
-        while(i+2<s.length()) {
-            int x = (int) s.charAt(i+1) - '0';
-            int y = (int) s.charAt(i+2) - '0';
-            if (s.charAt(i) == 'P') {
-                return new Pion(new Case(x,y));
-            } else {
-                return new Pion(new Case(x,y), true);
+    public ArrayList<Pion> stringToPion(String s) {
+        ArrayList<Pion> J = new ArrayList<>();
+        if (s != null) {
+            int i = 0;
+            while(i+2<s.length()) {
+                int x = (int) s.charAt(i+1) - '0';
+                int y = (int) s.charAt(i+2) - '0';
+                if (s.charAt(i) == 'P') {
+                    J.add(new Pion(new Case(x,y)));
+                } else {
+                    J.add(new Pion(new Case(x,y), true));
+                }
+                i = i+3;
             }
         }
-        return null;
+        return J;
     }
     
     public boolean save(Jeu jeu, String file_name) {
@@ -95,6 +100,8 @@ public class Sauvegarde {
             bufferedWriter = new BufferedWriter(new FileWriter(file_path));
 
             // On ecrit dans le fichier
+            bufferedWriter.write(String.valueOf(jeu.getTourDeJeu()));
+            bufferedWriter.newLine();
             for(Pion p : jeu.getJ1()) {
                 bufferedWriter.write(pionToString(p));
             }
@@ -134,9 +141,15 @@ public class Sauvegarde {
         try {
             
             BufferedReader buffReader = new BufferedReader(reader);
+            
+            String l0 = buffReader.readLine();
+            jeu.setTourDeJeu(Integer.parseInt(l0));
+            
             String l1 = buffReader.readLine();
+            jeu.setJ1(stringToPion(l1));
             
             String l2 = buffReader.readLine();
+            jeu.setJ2(stringToPion(l2));
         }
         catch(IOException e){
             System.out.println("erreur de lecture du fichier");

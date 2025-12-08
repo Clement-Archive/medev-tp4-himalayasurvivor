@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Jeu {
     private ArrayList<Pion> J1;
     private ArrayList<Pion> J2;
+    private int tourDeJeu;
     
     public void initJeu(){
         for (int y = 0; y<4; y++) {
@@ -38,14 +39,24 @@ public class Jeu {
     public void setJ2(ArrayList<Pion> J2) {
         this.J2 = J2;
     }
+
+    public int getTourDeJeu() {
+        return tourDeJeu;
+    }
+
+    public void setTourDeJeu(int tourDeJeu) {
+        this.tourDeJeu = tourDeJeu;
+    }
     
     public Jeu() {
         this.J1 = new ArrayList<>();
         this.J2 = new ArrayList<>();
+        this.tourDeJeu = 0;
     }
     
-    public Jeu(ArrayList<Pion> J1, ArrayList<Pion> J2) {
+    public Jeu(ArrayList<Pion> J1, ArrayList<Pion> J2, int tourDeJeu) {
         this.J1 = J1;
         this.J2 = J2;
+        this.tourDeJeu = tourDeJeu;
     }
 }
