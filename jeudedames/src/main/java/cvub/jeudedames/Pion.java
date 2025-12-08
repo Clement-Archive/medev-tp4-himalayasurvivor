@@ -10,24 +10,24 @@ package cvub.jeudedames;
  */
 public class Pion {
     private Case c;
-    private boolean estDame;
+    private boolean dame;
 
     public Pion(Case c) {
         this.c = c;
-        this.estDame = false;
+        this.dame = false;
     }
     
-    public Pion(Case c, boolean estDame) {
+    public Pion(Case c, boolean dame) {
         this.c = c;
-        this.estDame = estDame;
+        this.dame = dame;
     }
 
-    public boolean isEstDame() {
-        return estDame;
+    public boolean isDame() {
+        return dame;
     }
 
-    public void setEstDame(boolean estDame) {
-        this.estDame = estDame;
+    public void setDame(boolean dame) {
+        this.dame = dame;
     }
 
     public Case getC() {
