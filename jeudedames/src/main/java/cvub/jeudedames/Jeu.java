@@ -23,6 +23,18 @@ public class Jeu {
             }
         }
     }
+    
+    public boolean coupValide(Case inTile, Case outTile) {
+        int inData = dataTile(inTile);
+        int outData = dataTile(outTile);
+        int inType = typeTile(inTile);
+        int outType = typeTile(outTile);
+        
+        // case deja occupe
+        if (outData != 0) {return false; }
+        
+        return true;
+    }
 
     public ArrayList<Pion> getJ1() {
         return J1;
@@ -68,6 +80,30 @@ public class Jeu {
         }
         for (Pion pion : J2) {
             if(pion.getC().equals(c)) {return 2;}
+        }
+        return 0;
+    }
+    
+    // 0 if free, 1 if P, 2 if d
+    public int typeTile(Case c)
+    {
+        for (Pion pion : J1) {
+            if (pion.getC().equals(c)) {
+                if (pion.isDame()) {
+                    return 2;
+                } else {
+                    return 1;
+                }
+            }
+        }
+        for (Pion pion : J2) {
+            if (pion.getC().equals(c)) {
+                if (pion.isDame()) {
+                    return 2;
+                } else {
+                    return 1;
+                }
+            }
         }
         return 0;
     }
