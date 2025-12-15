@@ -62,4 +62,5 @@ jobs:
         working-directory: jeudedames
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Clement-Archive_medev-tp4-himalayasurvivor
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Clement-Archive_medev-tp4-himalayasurvivor -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+
