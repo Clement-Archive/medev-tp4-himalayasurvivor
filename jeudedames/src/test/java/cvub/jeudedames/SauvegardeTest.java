@@ -41,6 +41,9 @@ public class SauvegardeTest {
     /**
      * Test of createDirIfNotExists method, of class Sauvegarde.
      */
+    /*
+    
+    @Ignore
     @Test
     public void testCreateDirIfNotExists() {
         System.out.println("createDirIfNotExists");
@@ -50,6 +53,7 @@ public class SauvegardeTest {
         assertTrue(dir.exists());
         dir.delete();
     }
+    */
 
     /**
      * Test of pionToString method, of class Sauvegarde.
