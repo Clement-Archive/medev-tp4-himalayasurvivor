@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author Clément
  */
-public class Ui {
+public class ui {
     
     public void uiTourDeJeu(Jeu jeu, boolean tourDuJoueur1)
     {
