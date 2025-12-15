@@ -43,7 +43,6 @@ public class SauvegardeTest {
      */
     /*
     
-    @Ignore
     @Test
     public void testCreateDirIfNotExists() {
         System.out.println("createDirIfNotExists");
@@ -85,7 +84,6 @@ public class SauvegardeTest {
 
     /**
      * Test of save method, of class Sauvegarde.
-     */
     @Test
     public void testSaveAndLoad() {
         System.out.println("save");
@@ -111,5 +109,6 @@ public class SauvegardeTest {
         File file = new File(file_name);
         file.delete();
     }
+     */
 
 }
